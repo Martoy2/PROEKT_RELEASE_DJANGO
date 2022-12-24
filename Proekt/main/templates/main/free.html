@@ -1,0 +1,38 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Free Курс
+{% endblock %}
+
+{% block header-button %}
+    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Домой</a></li>
+    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">Про нас</a></li>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>Бесплатный курс.</h1>
+        <p class="fs-5 col-md-8">В бесплтаный курс входит: Основы python. Основные беблиотеки и работа сними. Основы ООП. Создадим первое гуй приложение и многое другое.</p>
+
+        <div class="mb-5">
+          <a href="/media/free_course.pdf" download="" class="btn btn-primary btn-lg px-4">Скачать Курс</a>
+        </div>
+
+        <hr class="col-3 col-md-2 mb-5">
+
+        <div class="row g-5">
+          <div class="col-md-6">
+            <h2>Старт проекта</h2>
+            <p>Основы python.Основные беблиотеки и работа сними.Основы ООП.Создадим первое гуй приложение и т.д.</p>
+          </div>
+
+          <div class="col-md-6">
+            <h2>Перед использованием</h2>
+            <p>Перед началом использования ознакомьтесь с пользовательским соглашением. <br> Регистрируясь и скачивая нашу программу, вы даете полно согласие с пользовательским соглашением.</p>
+            <ul class="icon-list ps-0">
+              <li class="d-flex align-items-start mb-1"><a href="tou">Пользовательское соглашение.</a></li>
+            </ul>
+          </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block title %}
+Курсы
+{% endblock %}
+
+{% block header-button %}
+    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active" aria-current="page">Домой</a></li>
+    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">Про нас</a></li>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/style.css' %}" type="text/css"/>
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Ваши курсы.</h1>
+    <p class="fs-5 text-muted">Доступные вам курсы.</p>
+    {%for el in courses%}
+        {% if user.subscribe == "PREMIUM" %}
+            <h3>{{el.name}}</h3>
+            <p>{{el.tou}}</p>
+            {% if el.file.url != None %}
+                <li class="w-25 btn btn-lg btn-primary"><a href="{{ el.file.url }}" download class="nav-link">Скачать</a></li>
+            {% endif %}
+        {% elif user.subscribe == el.subscribe_type %}
+            <h3>{{el.name}}</h3>
+            <p>{{el.tou}}</p>
+            {% if el.file.url != None %}
+                <li class="w-25 btn btn-lg btn-primary"><a href="{{ el.file.url }}" download class="nav-link">Скачать</a></li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    
+</div>
+{% endblock %}

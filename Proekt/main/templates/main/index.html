@@ -1,0 +1,105 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block header-button %}
+    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active" aria-current="page">Домой</a></li>
+    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">Про нас</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal">Главная страница</h1>
+        <p class="fs-5 text-muted">Лучший способ выучите Python. <br>А ты уже осовил Python?!</p>
+        <link rel="stylesheet" href="{% static 'main/css/style.css' %}" type="text/css"/>
+    </div>
+    <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Бесплатный курс</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">₽0<small class="text-muted fw-light">/месяц</small></h1>
+                      <small class="text-muted fw-light">Бесплатная версия.</small>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Основы python.</li>
+                        <li>Основные беблиотеки и работа сними.</li>
+                        <li>Основы ООП.</li>
+                        <li>Создадим первое гуй приложение и т.д.</li>
+                    </ul>
+                      {% if user.is_authenticated %}
+                            <li class="w-100 btn btn-lg btn-outline-primary"><a href="{% url 'free' %}" class="nav-link">Получить бесплатно</a></li>
+                      {% else %}
+                            <li class="w-100 btn btn-lg btn-outline-primary"><a href="{% url 'signup' %}" class="nav-link">Зарегестрироваться</a></li>
+                      {% endif %}
+                  </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Подписка на месяц</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">₽500<small class="text-muted fw-light">/Месяц</small></h1>
+                      <small class="text-muted fw-light">Подписка на месяц.</small>
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>Возможности бесплатной подписки.</li>
+                      <li>Доступ к дз базового уровня.</li>
+                      <li>Базовый уровень поддержки.</li>
+                      <li>Улучшенный курс.</li>
+                    </ul>
+                      {% if user.is_authenticated %}
+                            <li class="w-100 btn btn-lg btn-primary"><a href="{% url 'mothpay' %}" class="nav-link">Купить</a></li>
+                      {% else %}
+                            <li class="w-100 btn btn-lg btn-primary"><a href="{% url 'signup' %}" class="nav-link">Войти</a></li>
+                      {% endif %}
+                  </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                  <div class="card-header py-3 text-bg-primary border-primary">
+                    <h4 class="my-0 fw-normal">Годовая подписка</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">₽2400<small class="text-muted fw-light">/Год</small></h1>
+                    <small class="text-muted fw-light">На 60% выгоднее.</small>
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>Еженедельный пак дз с авто проверкой.</li>
+                      <li>Онлайн помощь ректоров.</li>
+                      <li>Высшый уровень поддержки.</li>
+                      <li>Полный курс.</li>
+                    </ul>
+                      {% if user.is_authenticated %}
+                            <li class="w-100 btn btn-lg btn-primary"><a href="{% url 'yearpay' %}" class="nav-link">Купить</a></li>
+                      {% else %}
+                            <li class="w-100 btn btn-lg btn-primary"><a href="{% url 'signup' %}" class="nav-link">Войти</a></li>
+                      {% endif %}
+                  </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="display-5 fw-normal text-center " style="margin-bottom:25px">Почему именно мы?</h1>
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <img src="{% static 'main/img/1.png' %}"  align="left" width="300" height="300" >
+                <h1 class="display-5 fw-normal text-center">Курсы</h1>
+                <p class="fs-3 text-muted">Лучшие курсы во всей России. Лучшие учителя, обяьснят любому, любую тему. Доступ к тысячи заданий. Все понятно и доступно каждому.</p>
+            </div>
+        </div>
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <img src="{% static 'main/img/2.png' %}" align="right" width="300" height="300" >
+                <h1 class="display-5 fw-normal text-center">Ежедневные задания</h1>
+                <p class="fs-3 text-muted">Вам будут доступны задания, подобранные под вас, а наши учителя помогут вам в их выполнении. Оригинальные и полезные задания. Авто проверка выполненых заданий.</p>
+            </div>
+        </div>
+    </main>
+{% endblock %}

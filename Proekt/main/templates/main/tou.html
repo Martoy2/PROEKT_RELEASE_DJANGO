@@ -1,0 +1,17 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Пользовательское соглашение.
+{% endblock %}
+
+{% block header-button %}
+    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Домой</a></li>
+    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link" aria-current="page">Про нас</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal">Пользовательское соглашение</h1>
+        <p class="fs-5 text-muted">1.Регистрируясь на сайте вы соглашаетесь с пользовательским соглашением.<br>2.Скачивая нашу программу вы соглашаетесь с пользовательским соглашением.<br>3.Мы не несем ответственость за утечки данных.<br>4.Ваши данные НЕ передаються 3 лицам.<br>5.Пользовательское соглашение может быть изменено не уведомляя вас.<br>6.Цена подписки может быть изменена не уведомляя вас.<br>7.Подписка может быть снята без обьяснения причин.</p>
+    </div>
+{% endblock %}

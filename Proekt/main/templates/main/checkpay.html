@@ -1,0 +1,26 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+{{fiel}} оплата
+{% endblock %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-5 fw-normal">{{fiel}}</h1>
+            <p class="fs-5 text-muted"> Оплатите подписку и ожидайте подтверждения.</p>
+            <P class="fs-5 text-muted">Счет действителен до {{time}}</P>
+            <p class="fs-5 text-muted"> Статус оплаты: {{status}}</p>
+            {% if status == "WAITING" %}
+                <li class="w-50 mb-2 btn btn-lg rounded-3 btn-primary"><a target="_blank" href="{{url}}" class="nav-link">Нажми на меня что бы оплатить</a></li>
+                <p></p>
+                <li class="w-50 mb-2 btn btn-lg rounded-3 btn-outline-primary"><a href="{% url 'reject' %}" class="nav-link">Отменить</a></li>
+            {% else %}
+                <li class="w-50 mb-2 btn btn-lg rounded-3 btn-primary"><a href="{% url 'home' %}" class="nav-link">Вернуться</a></li>
+            {% endif %}
+        </div>
+    {% else %}
+        <a href="{% url 'login' %}" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary">Войдите пожалуйста</a>
+    {% endif %}
+{% endblock %}

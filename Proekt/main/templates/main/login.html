@@ -1,0 +1,37 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block header-button %}
+    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Домой</a></li>
+    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link" aria-current="page">Про нас</a></li>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="p-3 pb-md-4 mx-auto text-center">
+            <h1 class="h3 mb-3 fw-normal">Login</h1>
+        </div>
+        <div class="form-floating mb-3 mx-auto w-50">
+            {{ form.email }}
+            <label>Email address</label>
+        </div>
+        <div class="form-floating mb-3 mx-auto w-50">
+            {{ form.password }}
+            <label>Password</label>
+        </div>
+        <div class="text-center">
+            <button class="w-50 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Login</button>
+        </div>
+        <div class="text-center">
+            <span class="h10 mb-3 fw-normal">{{ error }}</span>
+        </div>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <a href="{% url 'signup' %}">Еще не зарегестрированы?</a>
+        </div>
+    </form>
+
+{% endblock %}
